@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Pertambahan</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    @keyframes balloon-float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; } 
+    }
+
+    .balloon {
+      position: fixed;
+      width: 100px; 
+      height: 120px;
+      border-radius: 50%;
+      z-index: 999;
+      animation: balloon-float 1.5s linear forwards;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container">
+    <h1 id="welcomeMessage" class="fw-bold text-center mt-3">Selamat Datang di Game Pertambahan!</h1>
+    <div id="startScreen">
+      <div class="row justify-content-center">
+        <div class="col-sm-9 col-md-8 col-lg-6 col-xl-4 mt-5">
+          <div class="card border-0 bg-body-secondary">
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="form-label h5">Nama Kamu</label>
+                <input id="name" type="text" class="form-control form-control-lg">
+              </div>
+              <div class="mb-3">
+                <label class="form-label h5">Umur Kamu</label>
+                <input id="age" type="text" class="form-control form-control-lg">
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button id="startButton" class="btn btn-primary btn-lg" type="button">Mulai Game</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="levelSelection" class="hidden">
+      <div class="row justify-content-center">
+        <div class="col-sm-9 col-md-8 col-lg-8 col-xl-6 mt-5 text-center">
+          <div class="card border-0 bg-body-secondary">
+            <div class="card-body">
+              <h3 class="mb-4">Pilih Level</h3>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-outline-secondary btn-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mulai dari 1 sampai 10" onclick="startGame(1)">Level 1</button>
+                <button class="btn btn-outline-secondary btn-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mulai dari 11 sampai 20" onclick="startGame(2)">Level 2</button>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div id="game" class="hidden">
+      <div class="row justify-content-center">
+        <div class="col-sm-9 col-md-8 col-lg-8 col-xl-6 mt-5">
+          <button class="btn btn-secondary btn-lg mb-3" id="changeLevelButton">Ubah Level</button>
+          <div class="card border-0 bg-body-secondary">
+            <div class="card-body">
+              <h3 class="mb-3" id="question"></h3>
+              <input class="form-control form-control-lg" type="text" id="answer" placeholder="Jawaban">
+              <h3 class="my-2 lead" id="feedback"></h3>
+              <button class="btn btn-success btn-lg mt-3" id="submitAnswer">Kirim Jawaban</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
